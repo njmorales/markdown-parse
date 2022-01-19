@@ -19,6 +19,10 @@ public class MarkdownParse {
             }
             System.out.println("openBracket: " + nextOpenBracket);
             int nextCloseBracket = markdown.indexOf("](", nextOpenBracket);
+            System.out.println(markdown.substring(nextCloseBracket-1, nextCloseBracket));
+            if (markdown.substring(nextCloseBracket-1, nextCloseBracket).equals("\\")) {
+                nextCloseBracket = markdown.indexOf("](", nextCloseBracket + 1);
+            }
             System.out.println("closeBracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             System.out.println("openParen: " + openParen);

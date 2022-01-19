@@ -1,1 +1,1 @@
-[anote\]r l()ink!](some-page.html)
+[anote\](r l()ink!](some-page.html)
