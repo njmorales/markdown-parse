@@ -23,6 +23,9 @@ public class MarkdownParseTest {
         fileMap.put("test-file2.md", new ArrayList<String>(Arrays.asList()));
         fileMap.put("test-file3.md", new ArrayList<String>(Arrays.asList()));
         fileMap.put("test-file4.md", new ArrayList<String>(Arrays.asList()));
+        fileMap.put("snippet1.md", new ArrayList<String>(Arrays.asList("`google.com", "google.com", "ucsd.edu")));
+        fileMap.put("snippet2.md", new ArrayList<String>(Arrays.asList("a.com", "a.com(())", "example.com")));
+        fileMap.put("snippet3.md", new ArrayList<String>(Arrays.asList("https://www.twitter.com", "https://ucsd-cse15l-w22.github.io/", "https://cse.ucsd.edu/")));
     }
 
     @Test
@@ -43,5 +46,10 @@ public class MarkdownParseTest {
     @Test
     public void testFile4() throws Exception {
         assertEquals(fileMap.get("test-file4.md"), MarkdownParse.getLinks(Files.readString(Path.of("test-file4.md"))));
+    }
+
+    @Test
+    public void testSnippet1() throws Exception {
+        assertEquals(fileMap.get("snippet1.md"), MarkdownParse.getLinks(Files.readString(Path.of("snippet1.md"))));
     }
 }
