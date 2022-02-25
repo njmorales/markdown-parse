@@ -28,10 +28,14 @@ public class MarkdownParse {
             }
             System.out.println("closeBracket: " + nextCloseBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
-            System.out.println("openParen: " + openParen);
+            int spaceParen = markdown.indexOf(" ", openParen);
             int closeParen = markdown.indexOf(")", openParen);
-            System.out.println("closeParen:  " + closeParen);
-            toReturn.add(markdown.substring(openParen + 1, closeParen));
+            if(nextCloseBracket + 1 == openParen && (spaceParen > closeParen || spaceParen == -1)) {
+                toReturn.add(markdown.substring(openParen + 1, closeParen));
+            }
+            if(nextOpenBracket == -1 || nextCloseBracket == -1 || openParen == -1 || closeParen == -1) {
+                break;
+            }
             currentIndex = closeParen + 1;
         }
         return toReturn;
